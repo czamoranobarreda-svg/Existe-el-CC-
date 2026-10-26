@@ -1,0 +1,25 @@
+:root {
+  --color-bg: #f5f4ed;
+  --color-text-primary: #111111;
+  --color-text-secondary: #333333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: sans-serif;
+}
+
+.step {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
