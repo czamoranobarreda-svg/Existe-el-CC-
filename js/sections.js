@@ -20,6 +20,20 @@ function initScrolly(stepsContainerId, onStage) {
 
 function fmtYear(v) { return v < 0 ? "hoy" : Math.round(v).toString(); }
 
+// Dibuja una línea en proporción directa al avance del scroll (no de golpe al entrar),
+// para que el efecto se note con claridad mientras se hace scroll.
+function scrubLineDraw(lineObj, firstStepSelector) {
+  ScrollTrigger.create({
+    trigger: firstStepSelector,
+    start: "top 90%",
+    end: "top 35%",
+    scrub: 0.35,
+    onUpdate: (self) => {
+      gsap.set(lineObj.path, { strokeDashoffset: lineObj.length * (1 - self.progress) });
+    },
+  });
+}
+
 /* ---------------- Portada ---------------- */
 function buildHeroStripes() {
   const years = CLIMA_DATA.temperaturaGlobal;
@@ -95,13 +109,13 @@ function initSec1a() {
   const label = addLabel(plot, x(-75) - 8, y(427) - 10, "HOY · 427 ppm", "cap-label", "end");
 
   function stage(n) {
-    gsap.to(line.path, { strokeDashoffset: n >= 0 ? 0 : line.length, duration: 1, ease: "power2.out" });
     gsap.to(area, { opacity: n >= 1 ? 0.5 : 0, duration: 0.6 });
     gsap.to(techo, { opacity: n >= 2 ? 1 : 0, duration: 0.5 });
     gsap.to([jump, dot, label], { opacity: n >= 3 ? 1 : 0, duration: 0.5 });
   }
   initScrolly("sec1a-steps", stage);
   stage(-1);
+  scrubLineDraw(line, '#sec1a-steps .step-card[data-step="0"]');
 }
 
 function initSec1Extras() {
@@ -192,11 +206,11 @@ function initSec3() {
     label: addLabel(plot, x(h.ano), y(h.ppm) - 10, `${h.ano} · ${h.ppm}`, "cap-label", h.ano === 2025 ? "end" : "middle"),
   }));
   function stage(n) {
-    gsap.to(line.path, { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" });
     marks.forEach((m, i) => gsap.to([m.dot, m.label], { opacity: i <= n ? 1 : 0, duration: 0.4 }));
   }
   initScrolly("sec3-steps", stage);
   stage(-1);
+  scrubLineDraw(line, '#sec3-steps .step-card[data-step="0"]');
 
   // partículas
   const grid = document.getElementById("sec3-particles");
@@ -235,12 +249,12 @@ function initSec4() {
     label: addLabel(plot, x(h.ano), y(h.v) - 10, `${h.ano} · ${h.v} Gt`, "cap-label", h.ano === 2024 ? "end" : "middle"),
   }));
   function stage(n) {
-    gsap.to(line.path, { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" });
-    gsap.to(area, { opacity: 0.55, duration: 1 });
+    gsap.to(area, { opacity: n >= 0 ? 0.55 : 0, duration: 0.8 });
     marks.forEach((m, i) => gsap.to([m.dot, m.label], { opacity: i <= n ? 1 : 0, duration: 0.4 }));
   }
   initScrolly("sec4-steps", stage);
   stage(-1);
+  scrubLineDraw(line, '#sec4-steps .step-card[data-step="0"]');
 
   // bloques volcanes vs humanos
   const row = document.getElementById("sec4-volcano-row");
@@ -278,12 +292,12 @@ function initSec5() {
   const lineB = addLine(panelB.plot, temp, "ano", "anomalia_C_vs_1901_2000", panelB.x, panelB.y, "line-blue");
 
   function stage(n) {
-    gsap.to(lineA.path, { strokeDashoffset: n >= 0 ? 0 : lineA.length, duration: 1, ease: "power2.out" });
-    gsap.to(lineB.path, { strokeDashoffset: n >= 1 ? 0 : lineB.length, duration: 1, ease: "power2.out" });
     gsap.to([regionA, regionB], { opacity: n >= 2 ? 0.5 : 0, duration: 0.6 });
   }
   initScrolly("sec5-steps", stage);
   stage(-1);
+  scrubLineDraw(lineA, '#sec5-steps .step-card[data-step="0"]');
+  scrubLineDraw(lineB, '#sec5-steps .step-card[data-step="1"]');
 
   ScrollTrigger.create({
     trigger: "#sec5-strat", start: "top 75%",
@@ -321,13 +335,13 @@ function initSec7a() {
   const labelEnd = addLabel(plot, x(2025) - 8, y(4.75) - 10, "2025 · 4,75", "cap-label", "end");
 
   function stage(n) {
-    gsap.to(line.path, { strokeDashoffset: n >= 0 ? 0 : line.length, duration: 1, ease: "power2.out" });
     gsap.to(area, { opacity: n >= 0 ? 0.5 : 0, duration: 0.8 });
     gsap.to([dotStart, labelStart], { opacity: n >= 0 ? 1 : 0, duration: 0.4 });
     gsap.to([dotEnd, labelEnd], { opacity: n >= 1 ? 1 : 0, duration: 0.4 });
   }
   initScrolly("sec7a-steps", stage);
   stage(-1);
+  scrubLineDraw(line, '#sec7a-steps .step-card[data-step="0"]');
 
   const chileRow = document.getElementById("sec7a-chile-row");
   for (let i = 0; i < 3; i++) {
@@ -352,12 +366,10 @@ function initSec7b() {
   host.appendChild(svg);
   const lineCsiro = addLine(plot, data, "ano", "csiro_mm", x, y, "line-blue");
   const lineNoaa = addLine(plot, data.filter((d) => d.noaa_mm !== null), "ano", "noaa_mm", x, y, "line-red");
-  function stage(n) {
-    gsap.to(lineCsiro.path, { strokeDashoffset: n >= 0 ? 0 : lineCsiro.length, duration: 1.1, ease: "power2.out" });
-    gsap.to(lineNoaa.path, { strokeDashoffset: n >= 1 ? 0 : lineNoaa.length, duration: 1, ease: "power2.out" });
-  }
+  function stage() {}
   initScrolly("sec7b-steps", stage);
-  stage(-1);
+  scrubLineDraw(lineCsiro, '#sec7b-steps .step-card[data-step="0"]');
+  scrubLineDraw(lineNoaa, '#sec7b-steps .step-card[data-step="1"]');
 }
 
 function initSec7c() {
