@@ -1,23 +1,673 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Web CC</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>El clima siempre ha cambiado. ¿Entonces? — Web CC</title>
+<meta name="description" content="Una guía académica, didáctica y pedagógica sobre el cambio climático: la evidencia, en el orden en que la revisaría un científico escéptico." />
 
-  <link rel="stylesheet" href="./styles/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- GSAP (scroll animations) -->
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="./styles/styles.css">
+
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
-  <section class="step step-title" style="text-align:center;">
-    <h1>Web CC</h1>
-    <p>Placeholder — próximamente: contenido y diseño.</p>
-  </section>
+<!-- ============ PORTADA ============ -->
+<header class="hero" id="hero">
+  <div class="stripes-wrap">
+    <div class="stripes" id="hero-stripes"></div>
+    <div class="stripes-legend"><span>1850</span><span>cada franja es un año</span><span>2025</span></div>
+  </div>
+  <h1>El clima siempre ha cambiado.<br>¿Entonces?</h1>
+  <p class="bajada">Una guía para quien todavía no está convencido.</p>
+  <div class="ice-row" id="hero-ice-row" aria-hidden="true"></div>
+  <span class="scroll-hint">desplázate para empezar ↓</span>
+</header>
 
-  <script src="./js/main.js"></script>
+<main>
+<div class="prose" style="max-width:640px; padding-top:60px;">
+  <p>Si llegaste a esta página, lo más probable es que tengas dudas. Quizás has escuchado que el clima de la Tierra siempre ha cambiado, que hubo glaciaciones mucho antes de que existieran los autos, o que todo esto es una exageración. Son dudas razonables. La ciencia avanza justamente porque alguien duda.</p>
+  <p>Aquí no te vamos a pedir que creas nada. Vamos a revisar la evidencia en el orden en que lo haría un científico escéptico, una pregunta a la vez, con los datos originales y sus fuentes a la vista. Al final, la conclusión la sacas tú.</p>
+</div>
+
+<!-- ============ SECCIÓN 1 ============ -->
+<section class="section" id="s1">
+  <div class="section-head">
+    <span class="kicker">01</span>
+    <h2>Sí, el clima siempre ha cambiado</h2>
+    <p class="bajada">Y justamente por eso sabemos que lo de ahora es distinto.</p>
+  </div>
+
+  <div class="prose">
+    <p>Empecemos dándole la razón al argumento más común. El clima de la Tierra ha cambiado muchas veces. Hubo glaciaciones en las que enormes capas de hielo cubrían buena parte de Norteamérica y Europa, y hubo periodos más cálidos. Nadie en la ciencia del clima discute eso. De hecho, gran parte de lo que sabemos sobre el cambio climático actual viene de estudiar esos cambios del pasado.</p>
+    <p>Pero antes de seguir, conviene ponernos de acuerdo en qué significa "clima".</p>
+  </div>
+
+  <div class="info-box">
+    <p class="q">¿Qué es el clima?</p>
+    <p>Es el tiempo promedio de un lugar, o de todo el planeta, durante un periodo largo. La Organización Meteorológica Mundial usa como periodo clásico 30 años.</p>
+    <p class="q">¿Y el tiempo?</p>
+    <p>Es lo que pasa hoy o esta semana. El tiempo puede cambiar en horas. El clima cambia en décadas. Una forma sencilla de recordarlo: el tiempo es tu ánimo de hoy y el clima es tu personalidad.</p>
+    <cite>Definición adaptada del Glosario del IPCC, Sexto Informe de Evaluación.</cite>
+  </div>
+
+  <div class="prose">
+    <p>Volvamos al pasado. ¿Cómo se sabe qué clima había hace cientos de miles de años, si nadie estaba ahí para medirlo? Con hielo. En la Antártida, la nieve se acumula año tras año y va atrapando pequeñas burbujas de aire, muestras de la atmósfera de su época. Al perforar el hielo y sacar cilindros de varios kilómetros de largo, los científicos pueden medir cuánto CO₂ había en cada momento.</p>
+  </div>
+
+  <div class="icon-row"><span data-icon="nucleo" data-icon-color="blue"></span></div>
+
+  <div class="info-box">
+    <p class="q">¿Qué es un núcleo de hielo?</p>
+    <p>Un cilindro de hielo extraído de un glaciar o capa de hielo, que se usa para estudiar el clima y la composición de la atmósfera del pasado, conservada en el hielo y en el aire atrapado en él.</p>
+    <cite>Adaptado del Glosario del IPCC.</cite>
+  </div>
+  <div class="info-box">
+    <p class="q">¿Qué significa ppm?</p>
+    <p>Partes por millón. Si hay 427 ppm de CO₂, de cada millón de moléculas de aire, 427 son de CO₂.</p>
+  </div>
+
+  <div class="prose">
+    <p>Lo que muestran esos registros es un ritmo bastante ordenado. Durante los últimos 800.000 años el CO₂ subió y bajó siguiendo los ciclos de las glaciaciones, pero siempre se mantuvo entre unas 174 y unas 299 ppm. Nunca pasó de ese techo. <strong>Hoy estamos en 427 ppm.</strong></p>
+  </div>
+
+  <div class="scrolly" id="sec1a-scrolly">
+    <div class="grid">
+      <div class="sticky"><div class="viz" id="sec1a-viz">
+        <div class="chart-title">Hoy hay más CO₂ que en 800.000 años</div>
+        <div class="chart-sub">Cada punto es una muestra de aire atrapada en el hielo de la Antártida</div>
+      </div></div>
+      <div class="steps" id="sec1a-steps">
+        <div class="step-card" data-step="0"><div class="hito">Hace 800.000 años</div><p class="frase">800 mil años de datos guardados en el hielo.</p></div>
+        <div class="step-card" data-step="1"><div class="hito">Glaciaciones</div><p class="frase">En cada edad de hielo, el CO₂ bajaba hasta unas 180 ppm.</p></div>
+        <div class="step-card" data-step="2"><div class="hito">Techo natural</div><p class="frase">Nunca más de 299 ppm, en 800 mil años.</p></div>
+        <div class="step-card" data-step="3"><div class="hito">2025 · 427 ppm</div><p class="frase">El salto de los últimos 270 años rompe el techo.</p></div>
+      </div>
+    </div>
+    <div class="chart-source">Fuente: Bereiter et al. (2015), núcleos de hielo antárticos, NOAA Paleoclimatología. Punto rojo: NOAA GML, Mauna Loa, media 2025.</div>
+  </div>
+
+  <div class="prose">
+    <p>Hay un segundo dato que importa tanto como el primero: la velocidad. Hace unos 20.000 años, en lo más frío de la última glaciación, el planeta era en promedio unos 6 °C más frío que hoy. Salir de esa glaciación tomó alrededor de diez mil años — del orden de 0,06 °C por siglo. El calentamiento actual avanza a 0,27 °C por década, unos <strong>2,7 °C por siglo</strong>, unas cuarenta veces más rápido.</p>
+  </div>
+
+  <div class="bars-compare" id="sec1-bars">
+    <div class="bar-row"><div class="bar-label">Fin de la última glaciación</div><div class="bar-track"><div class="bar-fill blue" data-target="2.2"><span class="bar-value">0,06 °C/siglo</span></div></div></div>
+    <div class="bar-row"><div class="bar-label">Hoy (2016–2025)</div><div class="bar-track"><div class="bar-fill red" data-target="100"><span class="bar-value">2,7 °C/siglo</span></div></div></div>
+  </div>
+  <div class="chart-source" style="text-align:center;">Cálculo propio. Deglaciación: ~6 °C en ~10.000 años (Tierney et al. 2020; Osman et al. 2021). Actual: 0,27 °C/década (Forster et al. 2026).</div>
+
+  <div class="pictogram-wrap" id="sec1-reloj">
+    <div class="chart-title">La era industrial ocupa los últimos 30 segundos</div>
+    <svg class="clock-face" viewBox="0 0 160 160" width="200" height="200">
+      <circle cx="80" cy="80" r="70" fill="none" stroke="var(--border-soft)" stroke-width="3"/>
+      <g id="sec1-clock-ticks"></g>
+      <line id="sec1-clock-needle" x1="80" y1="80" x2="80" y2="16" stroke="var(--red)" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="80" cy="80" r="3.5" fill="var(--blue-dark)"/>
+      <text x="80" y="44" text-anchor="middle" font-size="9" fill="var(--color-text-tertiary)">24 h</text>
+      <text x="80" y="140" text-anchor="middle" font-size="9" fill="var(--color-text-tertiary)">12 h</text>
+    </svg>
+    <p style="font-size:13px; color:var(--color-text-tertiary); max-width:320px; margin:10px auto 0;">800.000 años = 24 horas. Cálculo propio: 275 años (1750–2025) sobre 800.000, llevado a un día.</p>
+  </div>
+
+  <div class="prose">
+    <p>El IPCC llega a la misma conclusión por otra vía: la temperatura ha subido desde 1970 más rápido que en cualquier otro periodo de 50 años de, al menos, los últimos 2.000 años, y el CO₂ está en su nivel más alto de los últimos dos millones de años como mínimo.</p>
+  </div>
+
+  <div class="info-box">
+    <p class="q">¿Qué es el IPCC?</p>
+    <p>El Grupo Intergubernamental de Expertos sobre el Cambio Climático, creado en 1988 por Naciones Unidas y la Organización Meteorológica Mundial. No hace investigación propia: reúne y evalúa miles de estudios publicados, revisados por científicos y gobiernos de todo el mundo.</p>
+  </div>
+
+  <div class="prose">
+    <p>Que el clima haya cambiado antes por causas naturales no prueba que el cambio actual también lo sea. Pasa lo mismo con los incendios forestales: que existan incendios provocados por rayos no significa que ningún incendio sea intencional. En cada caso hay que investigar la causa, y eso es lo que haremos en las siguientes secciones.</p>
+  </div>
+
+  <div class="datos-clave"><span class="label">Datos clave</span>Entre 174 y 299 ppm de CO₂ durante 800.000 años. 427 ppm en 2025. Calentamiento actual del orden de 40 veces más rápido que al salir de la última glaciación.</div>
+</section>
+
+<!-- ============ SECCIÓN 2 ============ -->
+<section class="section" id="s2">
+  <div class="section-head">
+    <span class="kicker">02</span>
+    <h2>¿Se está calentando el planeta ahora?</h2>
+    <p class="bajada">Lo primero es comprobar que hay algo que explicar.</p>
+  </div>
+
+  <div class="prose">
+    <p>Desde fines del siglo XIX existen mediciones de temperatura en estaciones en tierra, en barcos y, más tarde, en boyas en el océano. Varias instituciones combinan esos datos para calcular la temperatura media del planeta, por separado: NOAA y NASA en Estados Unidos, el servicio Copernicus de la Unión Europea, la Oficina Meteorológica del Reino Unido y la Agencia Meteorológica de Japón.</p>
+    <p>Cada una usa métodos algo distintos, así que sus cifras no son idénticas. Lo interesante es que todas dibujan la misma curva.</p>
+  </div>
+
+  <div class="info-box">
+    <p class="q">¿Qué es una anomalía de temperatura?</p>
+    <p>La diferencia entre la temperatura de un año y el promedio de un periodo de referencia. Si un año tiene una anomalía de +1 °C, estuvo un grado más cálido que ese promedio. Se usa porque es más fácil comparar diferencias que temperaturas absolutas de lugares muy distintos.</p>
+    <cite>Adaptado del Glosario del IPCC.</cite>
+  </div>
+
+  <div class="icon-row"><span data-icon="termometro" data-icon-color="red"></span><span data-icon="nube" data-icon-color="blue"></span></div>
+
+  <div class="scrolly" id="sec2-scrolly">
+    <div class="grid">
+      <div class="sticky"><div class="viz" id="sec2-viz">
+        <div class="chart-title">Los años recientes son los más cálidos desde 1850</div>
+        <div class="chart-sub">Cada barra es un año. La línea negra es el promedio del siglo XX (1901–2000)</div>
+      </div></div>
+      <div class="steps" id="sec2-steps">
+        <div class="step-card" data-step="0"><div class="hito">1880 · −0,19 °C</div><p class="frase">Así empieza el registro.</p></div>
+        <div class="step-card" data-step="1"><div class="hito">1976 · −0,06 °C</div><p class="frase">Todavía cerca del promedio del siglo XX.</p></div>
+        <div class="step-card" data-step="2"><div class="hito">2024 · +1,25 °C</div><p class="frase">El año más cálido medido.</p></div>
+      </div>
+    </div>
+    <div class="chart-source">Fuente: NOAA NCEI, Global Time Series (tierra y océano).</div>
+  </div>
+
+  <div class="prose">
+    <p>Los años suben y bajan porque fenómenos como El Niño y La Niña calientan o enfrían el planeta por un tiempo. Pero la tendencia de fondo no deja dudas: en la serie de NOAA, los once años más cálidos desde 1850 son los once años que van de 2015 a 2025, y el más cálido de todos fue 2024.</p>
+  </div>
+
+  <div class="info-box">
+    <p class="q">¿Qué son El Niño y La Niña?</p>
+    <p>Fases de un fenómeno natural del océano Pacífico tropical que se repite cada pocos años. Con El Niño el planeta suele calentarse un poco durante uno o dos años, y con La Niña suele enfriarse levemente. Explican los altibajos de un año a otro, no la tendencia de largo plazo.</p>
+  </div>
+  <div class="info-box">
+    <p class="q">¿Qué es el nivel preindustrial?</p>
+    <p>El periodo anterior al inicio de la actividad industrial a gran escala, hacia 1750. Como no hay suficientes termómetros de esa época, para la temperatura se usa como referencia el promedio de 1850 a 1900.</p>
+    <cite>Adaptado del Glosario del IPCC.</cite>
+  </div>
+
+  <div class="prose">
+    <p>Según Copernicus, 2025 estuvo 1,47 °C por encima del nivel preindustrial y fue el tercer año más cálido registrado. El promedio de 2023, 2024 y 2025 superó por primera vez 1,5 °C. Septiembre de 2026 marcó 1,63 °C, con un El Niño en fortalecimiento.</p>
+    <p><em>Un detalle a favor de la duda:</em> como cada institución compara con un periodo distinto, el valor de un mismo año cambia según la fuente. El gráfico de NOAA compara con el promedio del siglo XX y Copernicus con 1850–1900. Las cifras no calzan exactamente, aunque todas muestren lo mismo.</p>
+  </div>
+
+  <div class="datos-clave"><span class="label">Datos clave</span>Los 11 años más cálidos son los de 2015 a 2025. 2025 a 1,47 °C sobre el nivel preindustrial. 2023 a 2025, primer trienio sobre 1,5 °C.</div>
+</section>
+
+<!-- ============ SECCIÓN 3 ============ -->
+<section class="section" id="s3">
+  <div class="section-head">
+    <span class="kicker">03</span>
+    <h2>¿Qué cambió en la atmósfera?</h2>
+    <p class="bajada">La medición más constante de la historia de la ciencia.</p>
+  </div>
+
+  <div class="icon-row"><span data-icon="volcan" data-icon-color="blue"></span></div>
+
+  <div class="prose">
+    <p>En 1958, el científico Charles David Keeling empezó a medir el CO₂ del aire en el observatorio de Mauna Loa, en Hawái, a más de 3.000 metros de altura y lejos de ciudades y fábricas. Desde 1974, NOAA hace su propia medición en paralelo. El resultado se conoce como curva de Keeling y es el registro directo de CO₂ más largo que existe.</p>
+  </div>
+
+  <div class="scrolly" id="sec3-scrolly">
+    <div class="grid">
+      <div class="sticky"><div class="viz" id="sec3-viz">
+        <div class="chart-title">El CO₂ sube todos los años desde que se mide</div>
+        <div class="chart-sub">Medición directa en el observatorio de Mauna Loa, Hawái</div>
+      </div></div>
+      <div class="steps" id="sec3-steps">
+        <div class="step-card" data-step="0"><div class="hito">1959 · 316 ppm</div><p class="frase">Keeling hace su primera medición anual completa.</p></div>
+        <div class="step-card" data-step="1"><div class="hito">1988 · 350 ppm</div><p class="frase">Se cruza un nuevo umbral.</p></div>
+        <div class="step-card" data-step="2"><div class="hito">2015 · 400 ppm</div><p class="frase">400 ppm, por primera vez en la historia humana.</p></div>
+        <div class="step-card" data-step="3"><div class="hito">2025 · 427 ppm</div><p class="frase">Ni un solo año de baja.</p></div>
+      </div>
+    </div>
+    <div class="chart-source">Fuente: NOAA Global Monitoring Laboratory y Scripps Institution of Oceanography. Media anual.</div>
+  </div>
+
+  <div class="prose">
+    <p>La concentración pasó de 316 ppm en 1959 a 427 ppm en 2025, y el promedio anual no ha bajado ni un solo año. El ritmo, además, se acelera: el CO₂ aumentaba en promedio 0,86 ppm por año en la década de 1960 y 2,41 ppm por año en la de 2010. El salto entre 2023 y 2024 fue el mayor de todo el registro.</p>
+    <p>El CO₂ no es el único gas que creció. El IPCC estima que, desde 1750, el CO₂ aumentó un 47% y el metano un 156%. Ahora bien, 427 ppm suena a muy poco. Y lo es.</p>
+  </div>
+
+  <div class="pictogram-wrap">
+    <div class="chart-title">Si el aire fueran 10.000 partículas, solo 4 serían de CO₂</div>
+    <div class="particles-grid" id="sec3-particles"></div>
+    <p style="font-size:13px; color:var(--color-text-tertiary); margin-top:10px;">Son pocas, y aun así retienen calor. Lo mide la física desde 1859. Antes de la era industrial eran unas 2,8 de cada 10.000 (cálculo propio, a partir del 47% que informa el IPCC).</p>
+  </div>
+
+  <div class="info-box">
+    <p class="q">¿Qué es el efecto invernadero?</p>
+    <p>Algunos gases del aire, como el vapor de agua, el CO₂ y el metano, absorben parte del calor que la Tierra emite hacia el espacio y lo devuelven en todas direcciones, también hacia la superficie. Sin ese efecto natural el planeta sería mucho más frío. El problema aparece cuando aumentan esos gases: el efecto se intensifica y la superficie se calienta más.</p>
+    <cite>Adaptado del Glosario del IPCC.</cite>
+  </div>
+
+  <div class="pictogram-wrap" style="max-width:420px;">
+    <svg viewBox="0 0 320 200" id="sec3-greenhouse">
+      <text x="160" y="22" text-anchor="middle" font-size="11" fill="var(--color-text-tertiary)">Sol</text>
+      <circle cx="160" cy="36" r="10" fill="none" stroke="var(--color-text-tertiary)" stroke-width="2"/>
+      <rect id="gh-band" x="40" y="90" width="240" height="14" rx="7" fill="var(--red-light)" stroke="var(--red)" stroke-width="1.5"/>
+      <text x="160" y="160" text-anchor="middle" font-size="11" fill="var(--color-text-tertiary)">Tierra</text>
+      <path d="M150 170h20l-10 14Z" fill="var(--blue)"/>
+      <g id="gh-down-in" stroke="#d9a52c" stroke-width="2" fill="none" marker-end="url(#ghArrow)">
+        <path d="M140 46 130 90"/><path d="M160 46 160 90"/><path d="M180 46 190 90"/>
+      </g>
+      <g id="gh-up-out" stroke="var(--blue)" stroke-width="2" fill="none" marker-end="url(#ghArrowBlue)">
+        <path d="M130 170 118 46"/><path d="M160 170 160 46"/><path d="M190 170 202 46"/>
+      </g>
+      <g id="gh-bounce" stroke="var(--red)" stroke-width="2" fill="none" marker-end="url(#ghArrowRed)" opacity="0">
+        <path d="M118 104 100 170"/><path d="M202 104 220 170"/><path d="M150 104 140 170"/><path d="M170 104 180 170"/>
+      </g>
+      <defs>
+        <marker id="ghArrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#d9a52c"/></marker>
+        <marker id="ghArrowBlue" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--blue)"/></marker>
+        <marker id="ghArrowRed" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--red)"/></marker>
+      </defs>
+    </svg>
+    <p style="font-size:13px; color:var(--color-text-tertiary); text-align:center;">El calor sube desde la Tierra (azul) y parte rebota en los gases de efecto invernadero (rojo), de vuelta hacia la superficie.</p>
+  </div>
+
+  <div class="info-box">
+    <p class="q">¿Qué es un gas de efecto invernadero?</p>
+    <p>Un gas que absorbe y emite radiación infrarroja, es decir, calor. Los principales son el vapor de agua, el CO₂, el metano, el óxido nitroso y el ozono.</p>
+  </div>
+
+  <div class="datos-clave"><span class="label">Datos clave</span>De 316 a 427 ppm en 66 años. En 1988 se cruzaron las 350 ppm y en 2015 las 400 ppm.</div>
+</section>
+
+<!-- ============ SECCIÓN 4 ============ -->
+<section class="section" id="s4">
+  <div class="section-head">
+    <span class="kicker">04</span>
+    <h2>¿Cómo sabemos que ese CO₂ es nuestro?</h2>
+    <p class="bajada">Tres pistas independientes que apuntan al mismo lugar.</p>
+  </div>
+
+  <div class="prose">
+    <p><strong>La primera pista es una cuenta.</strong> Cada año la humanidad quema carbón, petróleo y gas, y las estadísticas de producción y consumo de energía permiten calcular cuánto CO₂ libera eso. Según el Global Carbon Project, las emisiones fósiles de 2025 llegaron a 38.100 millones de toneladas, un nuevo récord.</p>
+  </div>
+  <div class="icon-row"><span data-icon="calculadora" data-icon-color="red"></span></div>
+
+  <div class="scrolly" id="sec4-scrolly">
+    <div class="grid">
+      <div class="sticky"><div class="viz" id="sec4-viz">
+        <div class="chart-title">Cada año quemamos más carbón, petróleo y gas</div>
+        <div class="chart-sub">Emisiones mundiales de CO₂ de combustibles fósiles e industria</div>
+      </div></div>
+      <div class="steps" id="sec4-steps">
+        <div class="step-card" data-step="0"><div class="hito">1900 · 2 mil millones de t</div><p class="frase">El arranque de la industrialización.</p></div>
+        <div class="step-card" data-step="1"><div class="hito">1950 · 6 mil millones de t</div><p class="frase">La expansión de posguerra.</p></div>
+        <div class="step-card" data-step="2"><div class="hito">2024 · 38,6 mil millones de t</div><p class="frase">Récord tras récord.</p></div>
+      </div>
+    </div>
+    <div class="chart-source">Fuente: Our World in Data, a partir del Global Carbon Budget (Global Carbon Project).</div>
+  </div>
+
+  <div class="prose">
+    <p><strong>La segunda pista es química.</strong> El carbono existe en versiones más livianas y más pesadas, isótopos. Las plantas prefieren el carbono liviano (carbono-12) al pesado (carbono-13). El carbón, el petróleo y el gas son restos de plantas de hace millones de años, así que su CO₂ trae poco carbono-13. Si el CO₂ extra viniera de los combustibles fósiles, la proporción de carbono-13 en la atmósfera debería bajar. Y eso es exactamente lo que se mide. Los volcanes no dejan esa firma.</p>
+  </div>
+  <div class="icon-row"><span data-icon="lupaAtomo" data-icon-color="blue"></span></div>
+
+  <div class="info-box">
+    <p class="q">¿Qué es un isótopo?</p>
+    <p>Una variante de un mismo elemento químico que pesa un poco más o un poco menos. El carbono-12 y el carbono-13 son el mismo carbono, pero el segundo tiene un neutrón más. Esa pequeña diferencia funciona como una etiqueta de origen.</p>
+  </div>
+
+  <div class="prose">
+    <p><strong>La tercera pista</strong> descarta la explicación que más circula en redes. Los volcanes emiten entre 0,3 y 0,6 mil millones de toneladas de CO₂ al año. Las actividades humanas emiten 60 veces más, o incluso más.</p>
+  </div>
+  <div class="icon-row"><span data-icon="balanza" data-icon-color="red"></span></div>
+
+  <div class="volcano-blocks" id="sec4-volcano">
+    <div class="chart-title">Todos los volcanes del planeta en un año, vs. nosotros</div>
+    <div class="row" id="sec4-volcano-row"></div>
+    <p class="caption">1 bloque amarillo = los volcanes. Cada bloque oscuro = la misma cantidad emitida por actividades humanas. Son más de 60.</p>
+  </div>
+  <div class="chart-source" style="text-align:center;">Fuente: NOAA Climate.gov, a partir de Gerlach (2011) y Burton et al. (2013).</div>
+
+  <div class="datos-clave"><span class="label">Datos clave</span>38.100 millones de toneladas de CO₂ fósil en 2025. Por cada tonelada que emiten todos los volcanes del planeta, la humanidad emite más de 60.</div>
+</section>
+
+<!-- ============ SECCIÓN 5 ============ -->
+<section class="section" id="s5">
+  <div class="section-head">
+    <span class="kicker">05</span>
+    <h2>¿Y si fuera el Sol?</h2>
+    <p class="bajada">La sospecha más lógica, y la que mejor se puede comprobar.</p>
+  </div>
+
+  <div class="icon-row"><span data-icon="sol" data-icon-color="red"></span></div>
+
+  <div class="prose">
+    <p>Es razonable pensar en el Sol: de ahí viene casi toda la energía que mueve el clima. Hace décadas que se mide con satélites cuánta energía llega del Sol. Si el Sol fuera el responsable del calentamiento, su energía debería haber aumentado a la par con la temperatura.</p>
+  </div>
+
+  <div class="info-box">
+    <p class="q">¿Qué es la irradiancia solar?</p>
+    <p>La cantidad de energía del Sol que llega a la parte alta de la atmósfera, medida en vatios por metro cuadrado (W/m²). Varía un poco con un ciclo de unos 11 años.</p>
+  </div>
+
+  <div class="scrolly" id="sec5-scrolly">
+    <div class="grid">
+      <div class="sticky"><div class="viz" id="sec5-viz" style="display:flex; flex-direction:column; gap:10px;"></div></div>
+      <div class="steps" id="sec5-steps">
+        <div class="step-card" data-step="0"><div class="hito">Energía que llega del Sol</div><p class="frase">El Sol sube y baja con su ciclo, pero no sube de tendencia.</p></div>
+        <div class="step-card" data-step="1"><div class="hito">Temperatura de la Tierra</div><p class="frase">La Tierra sí sube.</p></div>
+        <div class="step-card" data-step="2"><div class="hito">Desde 1960</div><p class="frase">El Sol baja un poco; la Tierra sube casi 0,8 °C.</p></div>
+      </div>
+    </div>
+    <div class="chart-source">Fuentes: LASP, Universidad de Colorado (irradiancia solar total, hasta 2018) y NOAA NCEI.</div>
+  </div>
+
+  <div class="prose">
+    <p>En la reconstrucción del LASP, el promedio entre 1955 y 1965 fue de 1.361,50 W/m², y entre 2008 y 2018 fue de 1.361,36 W/m². Bajó un poco. En ese mismo lapso la temperatura global subió cerca de 0,8 °C.</p>
+    <p>Hay además una prueba más fina, una huella digital. Si el Sol calentara más, toda la atmósfera se calentaría, incluidas sus capas altas. Si la causa son los gases de efecto invernadero, que retienen el calor cerca de la superficie, la capa baja se calienta y la capa alta se enfría.</p>
+  </div>
+
+  <div class="info-box">
+    <p class="q">Troposfera y estratosfera</p>
+    <p>La troposfera es la capa más baja de la atmósfera, donde están las nubes y ocurre el tiempo. Encima está la estratosfera, que llega hasta unos 50 kilómetros de altura.</p>
+    <cite>Adaptado del Glosario del IPCC.</cite>
+  </div>
+
+  <div class="pictogram-wrap" style="max-width:420px;">
+    <div class="chart-title">La huella de la estratosfera</div>
+    <svg viewBox="0 0 320 140" id="sec5-strat">
+      <text x="80" y="16" text-anchor="middle" font-size="11" fill="var(--color-text-tertiary)">Si fuera el Sol</text>
+      <rect x="20" y="24" width="120" height="40" fill="var(--red-light)" id="strat-a-top"/>
+      <rect x="20" y="64" width="120" height="40" fill="var(--red-light)" id="strat-a-bot"/>
+      <text x="240" y="16" text-anchor="middle" font-size="11" fill="var(--color-text-tertiary)">Lo observado</text>
+      <rect x="180" y="24" width="120" height="40" fill="var(--blue-light)" id="strat-b-top"/>
+      <rect x="180" y="64" width="120" height="40" fill="var(--red-light)" id="strat-b-bot"/>
+      <text x="10" y="48" font-size="9" fill="var(--color-text-tertiary)" text-anchor="end"></text>
+      <text x="162" y="48" font-size="9" fill="var(--color-text-tertiary)">estratosfera</text>
+      <text x="162" y="88" font-size="9" fill="var(--color-text-tertiary)">troposfera</text>
+    </svg>
+    <p style="font-size:13px; color:var(--color-text-tertiary); text-align:center;">Un estudio de Benjamin Santer (2023, PNAS) encontró que la estratosfera media y alta se enfrió entre 1,8 y 2,2 °C entre 1986 y 2022 — entre 12 y 15 veces más de lo que podrían explicar causas naturales.</p>
+  </div>
+
+  <div class="datos-clave"><span class="label">Datos clave</span>Según el IPCC, el efecto sumado del Sol y los volcanes sobre la temperatura (1850–1900 a 2010–2019) está entre −0,1 y +0,1 °C. Del calentamiento observado de 1,09 °C, la mejor estimación humana es 1,07 °C.</div>
+</section>
+
+<!-- ============ SECCIÓN 6 ============ -->
+<section class="section" id="s6">
+  <div class="section-head">
+    <span class="kicker">06</span>
+    <h2>¿Es una idea nueva?</h2>
+    <p class="bajada">La física del efecto invernadero tiene 170 años.</p>
+  </div>
+
+  <div class="prose">
+    <p>Mucha gente asume que el cambio climático es una teoría reciente, nacida junto con el debate político. En realidad se conoce desde mediados del siglo XIX y se ha comprobado en laboratorio muchas veces.</p>
+  </div>
+
+  <div class="timeline-wrap" id="sec6-timeline">
+    <div class="timeline-track"><div class="fill" id="sec6-fill"></div></div>
+    <div class="timeline-pts">
+      <div class="timeline-pt" data-i="0"><span data-icon="frasco" data-icon-color="blue"></span><div class="dot"></div><div class="year">1856</div><div class="who">Eunice Foote expone cilindros con CO₂ al sol y nota que se calienta más.</div></div>
+      <div class="timeline-pt" data-i="1"><span data-icon="rayo" data-icon-color="blue"></span><div class="dot"></div><div class="year">1859</div><div class="who">John Tyndall mide cómo el CO₂ y el vapor de agua absorben calor.</div></div>
+      <div class="timeline-pt" data-i="2"><span data-icon="calculadora" data-icon-color="blue"></span><div class="dot"></div><div class="year">1896</div><div class="who">Svante Arrhenius calcula cuánto se calentaría el planeta al duplicar el CO₂.</div></div>
+      <div class="timeline-pt" data-i="3"><span data-icon="volcan" data-icon-color="red"></span><div class="dot"></div><div class="year">1958</div><div class="who">Keeling empieza a medir el CO₂ en Mauna Loa.</div></div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>El razonamiento completo cabe en tres líneas. Hace 170 años que sabemos que el CO₂ retiene calor. Desde 1750 su concentración aumentó casi a la mitad. Y el planeta se calentó. <strong>Lo raro sería que no lo hubiera hecho.</strong></p>
+  </div>
+  <div class="chart-source" style="text-align:center;">Fuentes: Foote (1856); Tyndall (1861); Arrhenius (1896); Weart, The Discovery of Global Warming (AIP).</div>
+</section>
+
+<!-- ============ SECCIÓN 7 ============ -->
+<section class="section" id="s7">
+  <div class="section-head">
+    <span class="kicker">07</span>
+    <h2>¿Hay otras señales además del termómetro?</h2>
+    <p class="bajada">El hielo, el mar y el océano cuentan la misma historia.</p>
+  </div>
+
+  <div class="prose">
+    <p>Supongamos que los termómetros estuvieran mal calibrados. Si fuera así, el resto del sistema climático no debería mostrar cambios. Pero el hielo del Ártico, el nivel del mar y el calor del océano se miden con instrumentos totalmente distintos — satélites, mareógrafos, boyas — y todos apuntan en la misma dirección.</p>
+  </div>
+
+  <div class="icon-row"><span data-icon="hielo" data-icon-color="blue"></span></div>
+  <div class="scrolly" id="sec7a-scrolly">
+    <div class="grid">
+      <div class="sticky"><div class="viz" id="sec7a-viz">
+        <div class="chart-title">El hielo del Ártico se achica</div>
+        <div class="chart-sub">Superficie mínima de hielo marino cada septiembre</div>
+      </div></div>
+      <div class="steps" id="sec7a-steps">
+        <div class="step-card" data-step="0"><div class="hito">1979 · 7,05 millones de km²</div><p class="frase">Primer año del registro satelital.</p></div>
+        <div class="step-card" data-step="1"><div class="hito">2025 · 4,75 millones de km²</div><p class="frase">Se perdió el equivalente a unas 3 veces Chile.</p></div>
+      </div>
+    </div>
+    <div class="chart-source">Fuente: NSIDC, Sea Ice Index v4. Comparación con Chile (~756.000 km²), cálculo propio.</div>
+  </div>
+  <div class="icon-row" id="sec7a-chile-row"></div>
+
+  <div class="icon-row"><span data-icon="ola" data-icon-color="blue"></span></div>
+  <div class="scrolly" id="sec7b-scrolly">
+    <div class="grid">
+      <div class="sticky"><div class="viz" id="sec7b-viz">
+        <div class="chart-title">El mar sube cada vez más rápido</div>
+        <div class="chart-sub">Nivel medio global del mar comparado con 1880</div>
+      </div></div>
+      <div class="steps" id="sec7b-steps">
+        <div class="step-card" data-step="0"><div class="hito">Mareógrafos</div><p class="frase">El registro costero empieza en 1880.</p></div>
+        <div class="step-card" data-step="1"><div class="hito">Satélites, desde 1993</div><p class="frase">Dos métodos distintos, la misma curva.</p></div>
+      </div>
+    </div>
+    <div class="chart-source">Fuente: US EPA, Climate Change Indicators (datos CSIRO y NOAA).</div>
+  </div>
+
+  <div class="info-box">
+    <p class="q">¿Por qué sube el mar?</p>
+    <p>Por dos razones: el agua se expande cuando se calienta, igual que el aire de un globo al sol, y el hielo que estaba sobre tierra firme (glaciares, Groenlandia, la Antártida) se derrite y escurre al océano. El hielo que ya flota en el mar, como el del Ártico, casi no cambia el nivel al derretirse.</p>
+  </div>
+
+  <div class="prose">
+    <p>El océano es donde se acumula la mayor parte del calor extra. Solo en 2025, los 2.000 metros superiores del océano ganaron 23 zettajoules de energía, un nuevo récord — equivalente a unos 37 años de toda la energía primaria que consume la humanidad, a niveles de 2023.</p>
+  </div>
+  <div class="icon-row"><span data-icon="termometro" data-icon-color="red"></span></div>
+  <div class="pictogram-wrap" style="max-width:460px;">
+    <div class="chart-title">37 años de energía mundial, en un año de océano</div>
+    <div class="icon-row" id="sec7c-plugs" style="flex-wrap:wrap; max-width:420px; margin:0 auto; gap:6px;"></div>
+  </div>
+
+  <div class="datos-clave"><span class="label">Datos clave</span>Pérdida de hielo ártico de septiembre equivalente a tres Chiles. Unos 20 cm de subida del mar desde 1901. Calor ganado por el océano en 2025 equivalente a 37 años de energía mundial.</div>
+</section>
+
+<!-- ============ SECCIÓN 8 ============ -->
+<section class="section" id="s8">
+  <div class="section-head">
+    <span class="kicker">08</span>
+    <h2>Los argumentos que más circulan</h2>
+    <p class="bajada">Lo que se dice, y lo que muestran los estudios. Toca una tarjeta para dar vuelta.</p>
+  </div>
+
+  <div class="mitos-grid" id="mitos-grid">
+    <div class="mito-card" data-icon-front="periodico">
+      <div class="inner">
+        <div class="mito-face mito-front"><span data-icon="periodico" data-icon-color="blue"></span><p>"Los científicos no se ponen de acuerdo."</p></div>
+        <div class="mito-face mito-back"><p>En una revisión de <span class="dato">88.125 estudios</span> publicados entre 2012 y 2020, el acuerdo sobre el origen humano del calentamiento supera el 99%.</p><p class="fuente">Lynas, Houlton y Perry (2021), Environmental Research Letters.</p></div>
+      </div>
+    </div>
+    <div class="mito-card">
+      <div class="inner">
+        <div class="mito-face mito-front"><span data-icon="periodico" data-icon-color="blue"></span><p>"En los setenta anunciaban una glaciación."</p></div>
+        <div class="mito-face mito-back"><p>De 71 artículos publicados entre 1965 y 1979, solo <span class="dato">7 anticipaban enfriamiento</span>, y 44 anticipaban calentamiento por CO₂. La idea vino sobre todo de la prensa.</p><p class="fuente">Peterson, Connolley y Fleck (2008), BAMS.</p></div>
+      </div>
+    </div>
+    <div class="mito-card">
+      <div class="inner">
+        <div class="mito-face mito-front"><span data-icon="pantallaCurva" data-icon-color="blue"></span><p>"Los modelos climáticos siempre se equivocan."</p></div>
+        <div class="mito-face mito-back"><p>Comparando modelos de 1970–2007 con lo observado después, <span class="dato">la mayoría proyectó bien</span> el calentamiento, en especial al corregir las emisiones reales.</p><p class="fuente">Hausfather et al. (2020), Geophysical Research Letters.</p></div>
+      </div>
+    </div>
+    <div class="mito-card">
+      <div class="inner">
+        <div class="mito-face mito-front"><span data-icon="volcan" data-icon-color="red"></span><p>"Los volcanes emiten más CO₂ que nosotros."</p></div>
+        <div class="mito-face mito-back"><p>Los volcanes emiten entre 0,3 y 0,6 mil millones de t de CO₂ al año. La humanidad emite <span class="dato">más de 60 veces esa cantidad</span>.</p><p class="fuente">NOAA Climate.gov, a partir de Gerlach (2011) y Burton et al. (2013).</p></div>
+      </div>
+    </div>
+    <div class="mito-card">
+      <div class="inner">
+        <div class="mito-face mito-front"><span data-icon="frasco" data-icon-color="blue"></span><p>"El CO₂ es apenas una mínima parte del aire."</p></div>
+        <div class="mito-face mito-back"><p>Es cierto: son unas <span class="dato">4 partículas de cada 10.000</span>. Pero su capacidad de absorber calor se mide en laboratorio desde 1859.</p><p class="fuente">Tyndall (1861); enfriamiento estratosférico, Santer et al. (2023).</p></div>
+      </div>
+    </div>
+    <div class="mito-card">
+      <div class="inner">
+        <div class="mito-face mito-front"><span data-icon="copo" data-icon-color="blue"></span><p>"Este invierno hizo un frío terrible."</p></div>
+        <div class="mito-face mito-back"><p>El tiempo es lo que pasa un día en un lugar. El clima es el promedio de <span class="dato">décadas en todo el planeta</span>. Ambas cosas son compatibles.</p><p class="fuente">Glosario del IPCC AR6.</p></div>
+      </div>
+    </div>
+    <div class="mito-card">
+      <div class="inner">
+        <div class="mito-face mito-front"><span data-icon="sol" data-icon-color="red"></span><p>"Es un ciclo natural del Sol."</p></div>
+        <div class="mito-face mito-back"><p>La energía del Sol no ha aumentado desde mediados del XX, y la estratosfera se enfría — algo que un Sol más activo no provocaría. Efecto natural total: <span class="dato">entre −0,1 y +0,1 °C</span>.</p><p class="fuente">IPCC AR6 GTI, A.1.3.</p></div>
+      </div>
+    </div>
+    <div class="mito-card">
+      <div class="inner">
+        <div class="mito-face mito-front"><span data-icon="mas1" data-icon-color="red"></span><p>"Un grado más no le hace daño a nadie."</p></div>
+        <div class="mito-face mito-back"><p>Un grado de promedio esconde cambios mayores: la tierra firme se calentó <span class="dato">1,59 °C</span>, casi el doble que el océano (0,88 °C).</p><p class="fuente">IPCC AR6, 1850–1900 a 2011–2020.</p></div>
+      </div>
+    </div>
+  </div>
+  <p class="mito-hint">toca una tarjeta ↑</p>
+</section>
+
+<!-- ============ SECCIÓN 9 ============ -->
+<section class="section" id="s9">
+  <div class="section-head">
+    <span class="kicker">09</span>
+    <h2>¿Y qué tiene que ver con Chile?</h2>
+    <p class="bajada">La megasequía también lleva una parte de huella humana.</p>
+  </div>
+
+  <div class="prose">
+    <p>Chile conoce de cerca un efecto concreto. Desde 2010, la zona central vive una megasequía, con años que han tenido entre 25% y 45% menos lluvia que lo normal. Una parte se explica por la variabilidad natural del océano Pacífico. Sin embargo, un estudio de Boisier, Rondanelli, Garreaud y Muñoz (2016) estimó que <strong>cerca de un cuarto del déficit de lluvia tiene origen humano.</strong></p>
+  </div>
+
+  <div class="chile-map-wrap">
+    <svg viewBox="0 0 80 200" width="90" height="220" id="sec9-map">
+      <path d="M40 6c-5 10-8 18-8 26 0 10 5 13 5 23s-8 13-8 26 6 15 6 28-3 13-3 21 4 28 4 42 -2 16 -2 22" fill="none" stroke="var(--color-text-tertiary)" stroke-width="3" stroke-linecap="round"/>
+      <path id="sec9-centro" d="M30 60c3-3 7-3 10 0 3 10 3 16 0 26-3 3-7 3-10 0-3-10-3-16 0-26Z" fill="var(--red)" opacity="0.85"/>
+    </svg>
+    <p style="font-size:12.5px; color:var(--color-text-tertiary); margin-top:8px;">Zona central, en sequía desde 2010</p>
+  </div>
+
+  <div class="pictogram-wrap">
+    <div class="chart-title">De cada 100 "gotas" de lluvia esperada, entre 25 y 45 faltan</div>
+    <div class="drop-grid" id="sec9-drops"></div>
+    <p style="font-size:12.5px; color:var(--color-text-tertiary); margin-top:10px;">Gotas rojas: la parte del déficit atribuida a influencia humana (cerca de 1 de cada 4 gotas vacías).</p>
+  </div>
+
+  <div class="prose">
+    <p>Al mismo tiempo, Chile aporta alrededor del 0,2% de las emisiones fósiles mundiales de CO₂. En 2024 emitió unas 4,0 toneladas por habitante, por debajo del promedio mundial de 4,7. El país enfrenta una doble tarea: reducir sus propias emisiones y, sobre todo, adaptarse a impactos que dependen de lo que haga el resto del mundo.</p>
+  </div>
+
+  <div class="info-box">
+    <p class="q">¿Qué es la atribución?</p>
+    <p>La rama de la ciencia del clima que estima cuánto de un cambio observado —una sequía, una ola de calor— se debe a causas humanas y cuánto a la variabilidad natural. Se hace comparando simulaciones del clima con y sin el efecto humano.</p>
+  </div>
+
+  <div class="chile-people" id="sec9-people">
+    <figure><span data-icon="persona" data-icon-color="blue"></span><div class="ton">4,0 t</div><figcaption>Chile, 2024</figcaption></figure>
+    <figure><span data-icon="persona" data-icon-color="red"></span><div class="ton">4,7 t</div><figcaption>Promedio mundial</figcaption></figure>
+  </div>
+  <p style="text-align:center; font-size:12px; color:var(--color-text-tertiary);">Toneladas de CO₂ por habitante al año</p>
+
+  <div class="datos-clave"><span class="label">Datos clave</span>Entre 25% y 45% menos lluvia al año en Chile central desde 2010. Cerca de un cuarto de ese déficit atribuido a influencia humana. 0,2% de las emisiones fósiles mundiales.</div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section class="cierre" id="cierre">
+  <div class="stripes-wrap">
+    <div class="stripes" id="cierre-stripes"></div>
+  </div>
+  <h2 style="margin-top:30px; max-width:680px;">Si llegaste hasta acá, esto es lo que sabemos.</h2>
+  <div class="prose" style="text-align:left;">
+    <p>El clima siempre ha cambiado, y por eso sabemos que lo de ahora es distinto. El CO₂ está muy por encima de todo lo registrado en 800.000 años, y el planeta se calienta decenas de veces más rápido que al salir de la última glaciación. Ese CO₂ lleva la firma química de los combustibles fósiles, y ni el Sol ni los volcanes explican lo que se observa. El hielo, el mar y el océano confirman lo que dicen los termómetros.</p>
+  </div>
+  <div class="info-box">
+    <p class="q">¿Qué es el cambio climático?</p>
+    <p>El IPCC lo define como un cambio en el estado del clima que se puede identificar en su promedio o en su variabilidad y que persiste por un periodo largo, típicamente décadas o más. La Convención Marco de Naciones Unidas usa el término para referirse específicamente al cambio atribuido a la actividad humana.</p>
+  </div>
+  <div class="prose" style="text-align:left;">
+    <p>La discusión científica ya dejó de girar en torno a si el cambio climático existe. Hoy la pregunta es cuánto y qué tan rápido podemos frenarlo. Quedan unas 170 mil millones de toneladas de CO₂ por emitir para mantenernos bajo 1,5 °C — unos cuatro años al ritmo de 2025.</p>
+  </div>
+  <div class="budget-row" id="cierre-budget">
+    <div class="budget-block">Año 1</div><div class="budget-block">Año 2</div><div class="budget-block">Año 3</div><div class="budget-block">Año 4</div>
+  </div>
+  <p style="font-size:12px; color:var(--color-text-tertiary); max-width:480px;">Presupuesto restante: ~170 mil millones de t de CO₂. Emisiones actuales: ~42 mil millones de t al año. Fuente: Global Carbon Project (2025).</p>
+  <div class="prose" style="margin-top:20px;">
+    <p>El calentamiento causado por el ser humano llegó a 1,37 °C en 2025 y avanza a 0,27 °C por década. Cada décima de grado que se evite reduce los impactos. Si después de leer esto todavía tienes dudas, perfecto. Las fuentes están todas abajo y son públicas. Revísalas.</p>
+  </div>
+</section>
+
+<!-- ============ GLOSARIO ============ -->
+<section class="section" id="glosario">
+  <div class="section-head"><h2>Glosario rápido</h2></div>
+  <dl class="glosario-grid">
+    <div class="term"><dt>Anomalía</dt><dd>Diferencia entre un valor y el promedio de un periodo de referencia.</dd></div>
+    <div class="term"><dt>Atribución</dt><dd>Estimación de cuánto de un cambio se debe a causas humanas y cuánto a causas naturales.</dd></div>
+    <div class="term"><dt>Cambio climático</dt><dd>Cambio del clima que persiste por décadas o más, natural o humano. En el lenguaje de la ONU, se refiere al atribuido a la actividad humana.</dd></div>
+    <div class="term"><dt>Clima</dt><dd>Tiempo promedio de un lugar durante un periodo largo, clásicamente 30 años.</dd></div>
+    <div class="term"><dt>Efecto invernadero</dt><dd>Retención de calor en la atmósfera por gases que absorben la radiación infrarroja que emite la Tierra.</dd></div>
+    <div class="term"><dt>El Niño y La Niña</dt><dd>Fases de un fenómeno natural del Pacífico tropical que calientan o enfrían temporalmente el planeta.</dd></div>
+    <div class="term"><dt>Estratosfera</dt><dd>Capa de la atmósfera sobre la troposfera, hasta unos 50 km de altura.</dd></div>
+    <div class="term"><dt>Glaciación</dt><dd>Periodo frío con grandes capas de hielo sobre los continentes y un nivel del mar más bajo.</dd></div>
+    <div class="term"><dt>IPCC</dt><dd>Grupo Intergubernamental de Expertos sobre el Cambio Climático, creado en 1988 por la ONU y la OMM.</dd></div>
+    <div class="term"><dt>Irradiancia solar</dt><dd>Energía del Sol que llega a la parte alta de la atmósfera, en W/m².</dd></div>
+    <div class="term"><dt>Isótopo</dt><dd>Variante de un elemento químico con distinto peso. Permite rastrear el origen del carbono.</dd></div>
+    <div class="term"><dt>Modelo climático</dt><dd>Representación del sistema climático basada en leyes físicas, químicas y biológicas.</dd></div>
+    <div class="term"><dt>Núcleo de hielo</dt><dd>Cilindro de hielo extraído de un glaciar o capa de hielo para estudiar el clima del pasado.</dd></div>
+    <div class="term"><dt>Nivel preindustrial</dt><dd>Periodo previo a la industrialización masiva, hacia 1750. Para temperatura se usa 1850–1900.</dd></div>
+    <div class="term"><dt>ppm</dt><dd>Partes por millón. 427 ppm de CO₂ significa 427 moléculas de CO₂ por cada millón de moléculas de aire.</dd></div>
+    <div class="term"><dt>Revisión por pares</dt><dd>Revisión de un estudio por especialistas independientes antes de su publicación.</dd></div>
+    <div class="term"><dt>Tiempo (meteorológico)</dt><dd>Estado de la atmósfera en un momento y lugar determinados.</dd></div>
+    <div class="term"><dt>Troposfera</dt><dd>Capa más baja de la atmósfera, donde están las nubes y ocurre el tiempo.</dd></div>
+    <div class="term"><dt>Zettajoule</dt><dd>Unidad de energía equivalente a 10²¹ joules.</dd></div>
+  </dl>
+</section>
+
+<!-- ============ FUENTES ============ -->
+<section class="section" id="fuentes">
+  <div class="section-head"><h2>Fuentes completas</h2></div>
+  <ol class="fuentes-list">
+    <li>NOAA NCEI. Climate at a Glance, Global Time Series. <a href="https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/global/time-series" target="_blank" rel="noopener">ncei.noaa.gov</a></li>
+    <li>Copernicus C3S (2026). Global Climate Highlights 2025. <a href="https://climate.copernicus.eu/copernicus-2025-was-third-hottest-year-record" target="_blank" rel="noopener">climate.copernicus.eu</a></li>
+    <li>NOAA GML y Scripps. Trends in Atmospheric Carbon Dioxide, Mauna Loa. <a href="https://gml.noaa.gov/ccgg/trends/" target="_blank" rel="noopener">gml.noaa.gov</a></li>
+    <li>IPCC (2021). AR6 Grupo de Trabajo I, Resumen para responsables de políticas. <a href="https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/" target="_blank" rel="noopener">ipcc.ch</a></li>
+    <li>IPCC (2021). AR6 Grupo de Trabajo I, Glosario. <a href="https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_AnnexVII.pdf" target="_blank" rel="noopener">ipcc.ch</a></li>
+    <li>Bereiter, B. et al. (2015). Registro de CO₂ de 800.000 años, núcleos de hielo antárticos. NOAA Paleoclimatología.</li>
+    <li>Tierney, J. E. et al. (2020). Glacial cooling and climate sensitivity revisited. <em>Nature</em>.</li>
+    <li>Osman, M. B. et al. (2021). Globally resolved surface temperatures since the Last Glacial Maximum. <em>Nature</em> 599.</li>
+    <li>Global Carbon Project (2025). Fossil fuel CO₂ emissions hit record high in 2025. <a href="https://globalcarbonbudget.org/fossil-fuel-co2-emissions-hit-record-high-in-2025/" target="_blank" rel="noopener">globalcarbonbudget.org</a></li>
+    <li>Our World in Data. CO₂ and Greenhouse Gas Emissions dataset. <a href="https://github.com/owid/co2-data" target="_blank" rel="noopener">github.com/owid/co2-data</a></li>
+    <li>Graven, H. et al. (2020). Changes to carbon isotopes in atmospheric CO₂. <em>Global Biogeochemical Cycles</em>.</li>
+    <li>NOAA Climate.gov. Which emits more CO₂, volcanoes or human activities?</li>
+    <li>LASP, Universidad de Colorado. Historical Total Solar Irradiance Reconstruction.</li>
+    <li>Santer, B. D. et al. (2023). Exceptional stratospheric contribution to human fingerprints on atmospheric temperature. <em>PNAS</em>.</li>
+    <li>Weart, S. The Discovery of Global Warming. American Institute of Physics.</li>
+    <li>NSIDC. Sea Ice Index, versión 4. <a href="https://nsidc.org/data/g02135" target="_blank" rel="noopener">nsidc.org</a></li>
+    <li>US EPA. Climate Change Indicators, Sea Level.</li>
+    <li>NASA JPL (2025). NASA analysis shows unexpected amount of sea level rise in 2024.</li>
+    <li>Pan, Y. Y. et al. (2026). Ocean Heat Content Sets Another Record in 2025. <em>Advances in Atmospheric Sciences</em>.</li>
+    <li>Lynas, M., Houlton, B. Z. y Perry, S. (2021). Greater than 99% consensus on human caused climate change. <em>Environmental Research Letters</em> 16.</li>
+    <li>Peterson, T. C., Connolley, W. M. y Fleck, J. (2008). The myth of the 1970s global cooling scientific consensus. <em>BAMS</em>.</li>
+    <li>Hausfather, Z. et al. (2020). Evaluating the performance of past climate model projections. <em>Geophysical Research Letters</em>.</li>
+    <li>Garreaud, R. D. et al. (2017). The 2010–2015 megadrought in central Chile. <em>HESS</em> 21.</li>
+    <li>Boisier, J. P., Rondanelli, R., Garreaud, R. D. y Muñoz, F. (2016). Anthropogenic and natural contributions to the Southeast Pacific precipitation decline. <em>Geophysical Research Letters</em>.</li>
+    <li>Forster, P. M. et al. (2026). Indicators of Global Climate Change 2025. <em>Earth System Science Data</em> 18.</li>
+  </ol>
+</section>
+
+<footer>
+  Web CC — El clima siempre ha cambiado. ¿Entonces? · Ninguna cifra es inventada; cuando un número viene de un cálculo propio, se indica en su fuente.
+</footer>
+</main>
+
+<script src="./js/data.js"></script>
+<script src="./js/icons.js"></script>
+<script src="./js/charts.js"></script>
+<script src="./js/sections.js"></script>
+<script src="./js/main.js"></script>
 </body>
 </html>
