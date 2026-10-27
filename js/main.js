@@ -10,6 +10,11 @@ if (REDUCED_MOTION) {
 document.addEventListener("DOMContentLoaded", () => {
   mountIcons();
 
+  document.querySelectorAll(".section-head").forEach((h) => {
+    const k = h.querySelector(".kicker");
+    if (k) h.dataset.num = k.textContent.trim();
+  });
+
   buildHeroStripes();
   buildHeroIce();
 
