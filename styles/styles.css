@@ -230,21 +230,11 @@ a { color: var(--blue-dark); }
   position: relative;
   width: 100%;
   background-color: var(--color-bg-card);
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 18px 18px;
-  border: 1px solid rgba(29,20,12,.16);
-  border-radius: 2px;
-  padding: 28px;
-  box-shadow: 0 20px 40px -26px rgba(29,20,12,.5);
+  border: 1px solid rgba(29,20,12,.1);
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 24px 48px -30px rgba(29,20,12,.35);
 }
-.scrolly .viz::before, .scrolly .viz::after {
-  content: ""; position: absolute; width: 16px; height: 16px;
-  border-color: var(--blue); border-style: solid; opacity: 0.6;
-}
-.scrolly .viz::before { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
-.scrolly .viz::after { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
 
 .scrolly .steps { display: flex; flex-direction: column; gap: 42vh; padding: 12vh 0; }
 .scrolly .step-card {

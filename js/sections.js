@@ -120,10 +120,11 @@ function initSec1a() {
 
 function initSec1Extras() {
   // barras velocidad
+  const velocityBars = document.querySelectorAll("#sec1-bars .bar-fill");
   ScrollTrigger.create({
-    trigger: "#sec1-bars", start: "top 75%",
-    onEnter: () => document.querySelectorAll("#sec1-bars .bar-fill").forEach((b) =>
-      gsap.to(b, { width: `${b.dataset.target}%`, duration: 1, ease: "power2.out" })),
+    trigger: "#sec1-bars", start: "top 85%", end: "bottom 50%", scrub: 0.3,
+    onUpdate: (self) => velocityBars.forEach((b) =>
+      gsap.set(b, { width: `${Number(b.dataset.target) * self.progress}%` })),
   });
 
   // reloj 24h
@@ -144,13 +145,10 @@ function initSec1Extras() {
   }, ticks);
 
   ScrollTrigger.create({
-    trigger: "#sec1-reloj", start: "top 70%",
-    onEnter: () => {
-      gsap.fromTo("#sec1-clock-needle", { rotation: 0 }, {
-        rotation: 360 * 3, duration: 2.6, ease: "power1.inOut", transformOrigin: "80px 80px",
-        onComplete: () => gsap.set("#sec1-clock-needle", { rotation: 0, transformOrigin: "80px 80px" }),
-      });
-      gsap.to("#sec1-clock-industrial", { opacity: 1, duration: 0.5, delay: 2.4 });
+    trigger: "#sec1-reloj", start: "top 85%", end: "bottom 45%", scrub: 0.35,
+    onUpdate: (self) => {
+      gsap.set("#sec1-clock-needle", { rotation: 360 * 3 * self.progress, transformOrigin: "80px 80px" });
+      gsap.set("#sec1-clock-industrial", { opacity: self.progress > 0.9 ? 1 : 0 });
     },
   });
 }
@@ -212,22 +210,31 @@ function initSec3() {
   stage(-1);
   scrubLineDraw(line, '#sec3-steps .step-card[data-step="0"]');
 
-  // partículas
+  // partículas: se encienden 4 de 10.000 en proporción al scroll
   const grid = document.getElementById("sec3-particles");
   const frag = document.createDocumentFragment();
+  const dots = [];
   for (let i = 0; i < 10000; i++) {
     const d = document.createElement("div");
-    d.className = "p" + (i < 4 ? " on" : "");
+    d.className = "p";
     frag.appendChild(d);
+    if (i < 4) dots.push(d);
   }
   grid.appendChild(frag);
-
-  // invernadero: muestra rebote rojo al entrar
   ScrollTrigger.create({
-    trigger: "#sec3-greenhouse", start: "top 70%",
-    onEnter: () => {
-      gsap.to("#gh-band", { attr: { height: 22, y: 84 }, duration: 0.6 });
-      gsap.to("#gh-bounce", { opacity: 1, duration: 0.6, delay: 0.3 });
+    trigger: grid, start: "top 85%", end: "top 40%", scrub: 0.3,
+    onUpdate: (self) => {
+      const n = Math.round(self.progress * dots.length);
+      dots.forEach((d, i) => d.classList.toggle("on", i < n));
+    },
+  });
+
+  // invernadero: la banda de gases se engrosa y rebota más calor en proporción al scroll
+  ScrollTrigger.create({
+    trigger: "#sec3-greenhouse", start: "top 85%", end: "bottom 40%", scrub: 0.3,
+    onUpdate: (self) => {
+      gsap.set("#gh-band", { attr: { height: 14 + self.progress * 8, y: 90 - self.progress * 6 } });
+      gsap.set("#gh-bounce", { opacity: self.progress });
     },
   });
 }
@@ -268,8 +275,11 @@ function initSec4() {
     row.appendChild(b); blocks.push(b);
   }
   ScrollTrigger.create({
-    trigger: "#sec4-volcano", start: "top 70%",
-    onEnter: () => gsap.to(blocks, { opacity: 1, y: 0, duration: 0.25, stagger: 0.025, ease: "power1.out" }),
+    trigger: "#sec4-volcano", start: "top 85%", end: "bottom 45%", scrub: 0.3,
+    onUpdate: (self) => {
+      const n = Math.round(self.progress * blocks.length);
+      blocks.forEach((b, i) => gsap.set(b, { opacity: i < n ? 1 : 0 }));
+    },
   });
 }
 
@@ -300,8 +310,8 @@ function initSec5() {
   scrubLineDraw(lineB, '#sec5-steps .step-card[data-step="1"]');
 
   ScrollTrigger.create({
-    trigger: "#sec5-strat", start: "top 75%",
-    onEnter: () => gsap.from("#sec5-strat rect", { opacity: 0, duration: 0.6, stagger: 0.08 }),
+    trigger: "#sec5-strat", start: "top 85%", end: "bottom 45%", scrub: 0.3,
+    onUpdate: (self) => gsap.set("#sec5-strat rect", { opacity: self.progress }),
   });
 }
 
@@ -350,9 +360,13 @@ function initSec7a() {
     s.style.opacity = 0;
     chileRow.appendChild(s);
   }
+  const chileSpans = chileRow.querySelectorAll("span");
   ScrollTrigger.create({
-    trigger: "#sec7a-chile-row", start: "top 80%",
-    onEnter: () => gsap.to("#sec7a-chile-row span", { opacity: 1, duration: 0.4, stagger: 0.15 }),
+    trigger: "#sec7a-chile-row", start: "top 90%", end: "bottom 55%", scrub: 0.3,
+    onUpdate: (self) => {
+      const n = Math.round(self.progress * chileSpans.length);
+      chileSpans.forEach((s, i) => gsap.set(s, { opacity: i < n ? 1 : 0 }));
+    },
   });
 }
 
@@ -381,9 +395,13 @@ function initSec7c() {
     s.style.width = "22px"; s.style.height = "22px";
     host.appendChild(s);
   }
+  const plugSpans = host.querySelectorAll("span");
   ScrollTrigger.create({
-    trigger: "#sec7c-plugs", start: "top 80%",
-    onEnter: () => gsap.to("#sec7c-plugs span", { opacity: 1, duration: 0.15, stagger: 0.025 }),
+    trigger: host, start: "top 85%", end: "bottom 40%", scrub: 0.3,
+    onUpdate: (self) => {
+      const n = Math.round(self.progress * plugSpans.length);
+      plugSpans.forEach((s, i) => gsap.set(s, { opacity: i < n ? 1 : 0 }));
+    },
   });
 }
 
@@ -402,8 +420,8 @@ function initMitos() {
 /* ---------------- Sección 9 ---------------- */
 function initSec9() {
   ScrollTrigger.create({
-    trigger: "#sec9-map", start: "top 75%",
-    onEnter: () => gsap.from("#sec9-centro", { opacity: 0, duration: 0.8 }),
+    trigger: "#sec9-map", start: "top 90%", end: "bottom 55%", scrub: 0.3,
+    onUpdate: (self) => gsap.set("#sec9-centro", { opacity: self.progress }),
   });
 
   const grid = document.getElementById("sec9-drops");
@@ -419,9 +437,13 @@ function initSec9() {
     s.innerHTML = ICONS.gota;
     grid.appendChild(s);
   }
+  const dropSpans = grid.querySelectorAll("span");
   ScrollTrigger.create({
-    trigger: "#sec9-drops", start: "top 80%",
-    onEnter: () => gsap.to("#sec9-drops span", { opacity: 1, duration: 0.02, stagger: 0.008 }),
+    trigger: grid, start: "top 85%", end: "bottom 40%", scrub: 0.3,
+    onUpdate: (self) => {
+      const n = Math.round(self.progress * dropSpans.length);
+      dropSpans.forEach((s, i) => gsap.set(s, { opacity: i < n ? 1 : 0 }));
+    },
   });
 
   const people = document.querySelectorAll("#sec9-people .ton");
