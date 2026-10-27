@@ -33,30 +33,9 @@
   --radius: 3px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-bg: #191510;
-    --color-bg-card: #221c14;
-    --color-text-primary: #f1e9d8;
-    --color-text-secondary: #cdbfa6;
-    --color-text-tertiary: #8d8068;
-    --blue-light: #1c3240;
-    --red-light: #3a241c;
-    --border-soft: #3a3225;
-    --grid-line: rgba(220, 205, 170, 0.07);
-  }
-}
-:root[data-theme="dark"] {
-  --color-bg: #191510;
-  --color-bg-card: #221c14;
-  --color-text-primary: #f1e9d8;
-  --color-text-secondary: #cdbfa6;
-  --color-text-tertiary: #8d8068;
-  --blue-light: #1c3240;
-  --red-light: #3a241c;
-  --border-soft: #3a3225;
-  --grid-line: rgba(220, 205, 170, 0.07);
-}
+/* El sitio es deliberadamente de un solo tema (papel claro) y no sigue
+   prefers-color-scheme: un tema oscuro automático volvía los gráficos y
+   el texto difíciles de leer. Sin selector de tema por ahora. */
 
 /* ---------- Reset ---------- */
 * { box-sizing: border-box; }
@@ -246,7 +225,6 @@ a { color: var(--blue-dark); }
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: crosshair;
 }
 .scrolly .viz {
   position: relative;
